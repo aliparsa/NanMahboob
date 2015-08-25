@@ -1,5 +1,8 @@
 package partopars.irdevelopers.nanmahboob;
 
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.app.Activity;
 import android.support.v7.app.ActionBar;
@@ -19,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -63,6 +67,7 @@ public class NavigationDrawerFragment extends Fragment {
     private int mCurrentSelectedPosition = 0;
     private boolean mFromSavedInstanceState;
     private boolean mUserLearnedDrawer;
+    private android.content.Context context;
 
     public NavigationDrawerFragment() {
     }
@@ -70,7 +75,7 @@ public class NavigationDrawerFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        context = getActivity();
         // Read in the flag indicating whether or not the user has demonstrated awareness of the
         // drawer. See PREF_USER_LEARNED_DRAWER for details.
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
@@ -104,12 +109,25 @@ public class NavigationDrawerFragment extends Fragment {
             }
         });
 
-        ArrayList<NavigationDrawerItem> navigationDrawerItems = new ArrayList<NavigationDrawerItem>();
-        navigationDrawerItems.add(new NavigationDrawerItem("محصولات"));
-        navigationDrawerItems.add(new NavigationDrawerItem("تماس با ما"));
 
-        ListViewObjectAdapter adapter = new ListViewObjectAdapter(getActivity(),navigationDrawerItems);
+        ArrayList<NavigationDrawerItem> navigationDrawerItems = new ArrayList<NavigationDrawerItem>();
+        navigationDrawerItems.add(new NavigationDrawerItem("محصولات",R.drawable.breadnavi));
+        navigationDrawerItems.add(new NavigationDrawerItem("خرید سریع",R.drawable.breadnavi));
+        navigationDrawerItems.add(new NavigationDrawerItem("ثبت نام",R.drawable.breadnavi));
+        navigationDrawerItems.add(new NavigationDrawerItem("تماس با ما",R.drawable.breadnavi));
+        navigationDrawerItems.add(new NavigationDrawerItem("تنظیمات",R.drawable.breadnavi));
+
+
+        ListViewObjectAdapter adapter = new ListViewObjectAdapter(context,navigationDrawerItems);
         mDrawerListView.setAdapter(adapter);
+
+        // set list view header
+        LayoutInflater inflater2 = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = inflater2.inflate(R.layout.header_navigation_drawer, null);
+        mDrawerListView.addHeaderView(view);
+
+
+
 //        mDrawerListView.setAdapter(new ArrayAdapter<String>(
 //                getActionBar().getThemedContext(),
 //                android.R.layout.simple_list_item_activated_1,
@@ -120,6 +138,8 @@ public class NavigationDrawerFragment extends Fragment {
 //                        getString(R.string.title_section3),
 //                }));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
+
+
         return mDrawerListView;
     }
 
@@ -292,4 +312,6 @@ public class NavigationDrawerFragment extends Fragment {
          */
         void onNavigationDrawerItemSelected(int position);
     }
+
+
 }

@@ -17,9 +17,12 @@ import partopars.irdevelopers.nanmahboob.R;
 public class NavigationDrawerItem implements IListViewItem {
 
     String title;
+    Integer imageResource;
 
-    public NavigationDrawerItem(String title){
+    public NavigationDrawerItem(String title,Integer imageResource ){
+
         this.title=title;
+        this.imageResource=imageResource;
     }
 
     @Override
@@ -50,16 +53,18 @@ public class NavigationDrawerItem implements IListViewItem {
         if (holder.title == null)
             holder.title = (TextView) view.findViewById(R.id.title);
 
-//        if (holder.imageView == null)
-//            holder.imageView = (ImageView) view.findViewById(R.id.newsImage);
+        if (holder.imageView == null)
+            holder.imageView = (ImageView) view.findViewById(R.id.img_item_navigation);
 
         // fill
         holder.title.setText(this.title);
+        holder.imageView.setImageResource(this.imageResource);
 
     }
 
     public class Holder {
         public NavigationDrawerItem  navigationDrawerItem;
         TextView title;
+        ImageView imageView;
     }
 }

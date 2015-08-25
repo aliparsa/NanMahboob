@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 21
+    compileSdkVersion 23
     buildToolsVersion "21.1.2"
 
     defaultConfig {
-        applicationId "irdevelopers.asemanweb"
+        applicationId "partopars.irdevelopers.NanMahboob"
         minSdkVersion 17
-        targetSdkVersion 21
+        targetSdkVersion 23
         versionCode 14
         versionName "14"
     }
@@ -21,6 +21,7 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:22.1.0'
 
+    compile 'com.android.support:appcompat-v7:23.0.0'
+    compile 'com.android.support:support-v4:23.0.0'
 }
