@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        context=this;
+        context = this;
 
         RtlSupportHelper.forceRTLIfSupported((Activity) context);
 
@@ -161,31 +162,15 @@ public class MainActivity extends AppCompatActivity
 
     //----------------------------------------------------------------------------------------------
     private void prepareActionbar() {
-        try{
+        try {
 
             final ViewGroup customActionBar = (ViewGroup) getLayoutInflater().inflate(R.layout.actionbar_nav,
                     null);
-////        View customActionBar = getLayoutInflater().inflate(R.layout.actionbar_nav, null);
             final ActionBar actionBar = getSupportActionBar();
-//            actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-//            actionBar.setDisplayShowHomeEnabled(false);
-//            actionBar.setDisplayShowTitleEnabled(false);
-            actionBar.setDisplayShowCustomEnabled(true);
-//            //actionBar.setCustomView(customActionBar);
-//            //actionBar.setCustomView(R.layout.actionbar_nav);
-//            actionBar.setCustomView(customActionBar, new Toolbar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-//
-//            actionBar.setCustomView(R.layout.actionbar_nav);
-//            View v = actionBar.getCustomView();
-//            ViewGroup.LayoutParams lp = v.getLayoutParams();
-//            lp.width = ViewGroup.LayoutParams.MATCH_PARENT;
-//            v.setLayoutParams(lp);
-
             getSupportActionBar().setHomeButtonEnabled(false);
             getSupportActionBar().setDisplayShowTitleEnabled(false);
             getSupportActionBar().setDisplayShowCustomEnabled(true);
             getSupportActionBar().setIcon(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
-
             ActionBar.LayoutParams layoutParams = new ActionBar.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT,
                     ActionBar.LayoutParams.MATCH_PARENT);
             getSupportActionBar().setCustomView(customActionBar, layoutParams);
@@ -193,6 +178,16 @@ public class MainActivity extends AppCompatActivity
             parent.setContentInsetsAbsolute(0, 0);
 
 
+            ImageView navigationDrawerOpenClose = (ImageView) customActionBar.findViewById(R.id.ac_nav);
+            navigationDrawerOpenClose.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (mNavigationDrawerFragment.isDrawerOpen())
+                        mNavigationDrawerFragment.mDrawerLayout.closeDrawer(Gravity.RIGHT);
+                    else
+                        mNavigationDrawerFragment.mDrawerLayout.openDrawer(Gravity.RIGHT);
+                }
+            });
 //
 //            ImageView icon = (ImageView) customActionBar.findViewById(R.id.ac_icon);
 //            icon.setVisibility(View.GONE);
@@ -204,9 +199,7 @@ public class MainActivity extends AppCompatActivity
 //            LinearLayout nav = (LinearLayout) customActionBar.findViewById(R.id.ac_nav_layout);
 
 
-
-
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
