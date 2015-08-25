@@ -16,8 +16,8 @@ import partopars.irdevelopers.nanmahboob.R;
  */
 public class NavigationDrawerItem implements IListViewItem {
 
-    String title;
-    Integer imageResource;
+    public String title;
+    public Integer imageResource;
 
     public NavigationDrawerItem(String title,Integer imageResource ){
 

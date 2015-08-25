@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NanMahboob</string>
+    <string name="app_name">Nan Mahboob</string>
 
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
@@ -10,11 +10,11 @@
 
     <string name="action_example">Example action</string>
 
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_products">ProductsActivity</string>
+    <string name="action_settings">تنظیمات</string>
+    <string name="title_activity_products">محصولات</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="title_activity_quick_buy">QuickBuyActivity</string>
-    <string name="title_activity_register">RegisterActivity</string>
-    <string name="title_activity_contact_us">ContactUsActivity</string>
+    <string name="title_activity_quick_buy">خرید سریع</string>
+    <string name="title_activity_register">ثبت نام</string>
+    <string name="title_activity_contact_us">تماس با ما</string>
 </resources>
