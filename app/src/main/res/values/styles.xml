@@ -5,7 +5,7 @@
 
 
             <!-- Customize your theme here. -->
-            <item name="colorPrimary">#8d3a13</item>
+            <item name="colorPrimary">#a52500</item>
             <item name="colorPrimaryDark">#ff0021ff</item>
             <item name="colorAccent">#ff0021ff</item>
             <item name="android:statusBarColor">#8a2300</item>

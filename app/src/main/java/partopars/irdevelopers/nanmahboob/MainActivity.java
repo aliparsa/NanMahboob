@@ -4,28 +4,32 @@ import android.app.Activity;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.util.ArrayList;
+
+import DataModel.Group;
+import Helpers.HttpHelper;
 import Helpers.RtlSupportHelper;
+import Helpers.ServerAddress;
+import Intefaces.CallBackAsync;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
     Context context;
+
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -42,6 +46,31 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         context = this;
+
+
+        new HttpHelper().post(context, ServerAddress.funcFile, "tag=groups", new CallBackAsync() {
+
+            @Override
+            public void onSuccessFinish(String result) {
+                Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+                try {
+                    JSONArray jsonArray = new JSONArray(result);
+                    ArrayList<Group> groups = Group.getArrayListFromJsonArray(jsonArray);
+
+                    int a;
+                    a=10;
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                Toast.makeText(context, errorMessage, Toast.LENGTH_LONG).show();
+            }
+        });
+
 
         RtlSupportHelper.forceRTLIfSupported((Activity) context);
 

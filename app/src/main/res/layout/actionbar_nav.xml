@@ -14,7 +14,7 @@
         android:layout_width="fill_parent"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:background="#8d3a13"
+        android:background="#a52500"
         android:clickable="true"
         android:layout_alignParentRight="true">
 
@@ -76,8 +76,9 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="@drawable/hit"
+            android:src="@drawable/basket"
             android:textColor="#fff"
-            android:scaleType="center"
+            android:scaleType="fitXY"
             android:alpha="1" />
 
         <ImageView
@@ -86,6 +87,7 @@
             android:layout_height="48dp"
             android:scaleType="center"
             android:textColor="#fff"
+            android:visibility="gone"
             android:background="@drawable/hit"
             android:alpha="1" />
 
@@ -94,6 +96,7 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:scaleType="center"
+            android:visibility="gone"
             android:textColor="#fff"
             android:background="@drawable/hit"
             android:alpha="1" />

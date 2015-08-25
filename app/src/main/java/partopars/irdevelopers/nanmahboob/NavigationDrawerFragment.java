@@ -121,6 +121,8 @@ public class NavigationDrawerFragment extends Fragment {
         LayoutInflater inflater2 = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater2.inflate(R.layout.header_navigation_drawer, null);
         mDrawerListView.addHeaderView(view);
+
+
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
 
         mDrawerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
