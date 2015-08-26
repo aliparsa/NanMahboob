@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.FailReason;
@@ -94,6 +95,17 @@ public class Group implements IListViewItem{
             holder.imageView.setImageBitmap(loadedImage);
             holder.progressBar.setVisibility(View.GONE);
         }else {
+
+            DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
+            .cacheInMemory(true)
+            .cacheOnDisk(true)
+            .build();
+
+            ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context)
+            .defaultDisplayImageOptions(defaultOptions)
+            .build();
+
+            ImageLoader.getInstance().init(config);
             ImageLoader imageLoader = ImageLoader.getInstance();
             imageLoader.init(ImageLoaderConfiguration.createDefault(context));
             imageLoader.displayImage(this.groupImage, holder.imageView, new ImageLoadingListener() {
