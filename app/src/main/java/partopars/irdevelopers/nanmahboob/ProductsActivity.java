@@ -1,18 +1,31 @@
 package partopars.irdevelopers.nanmahboob;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 
+import java.util.ArrayList;
+
+import Adapter.ListViewObjectAdapter;
+import DataModel.Group;
+import DataModel.Product;
+import Helpers.DataLoaderHelper;
+import Helpers.RamHelper;
 import Helpers.RtlSupportHelper;
+import Intefaces.CallBack;
+import Intefaces.CallBackYes;
 import partopars.irdevelopers.nanmahboob.R;
 
 public class ProductsActivity extends ActionBarActivity {
 
     private Context context;
+    private Group group;
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +34,30 @@ public class ProductsActivity extends ActionBarActivity {
         context=this;
         
         RtlSupportHelper.forceRTLIfSupported((Activity) context);
+
+        listView = (ListView) findViewById(R.id.listView);
+
+
+        group = RamHelper.group;
+
+        DataLoaderHelper.syncProducts(context, new CallBack() {
+            @Override
+            public void onSuccess() {
+                ArrayList<Product> products = new ArrayList<Product>();
+                for (Product product : DataLoaderHelper.products) {
+                    if (product.groupId == group.groupId)
+                        products.add(product);
+                }
+                listView.setAdapter(new ListViewObjectAdapter<Product>(context, products));
+            }
+
+            @Override
+            public void onError() {
+
+            }
+        });
+
+
 
     }
 

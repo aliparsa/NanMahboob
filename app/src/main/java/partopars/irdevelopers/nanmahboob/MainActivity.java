@@ -3,6 +3,7 @@ package partopars.irdevelopers.nanmahboob;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.ActionBar;
 import android.content.Context;
@@ -22,14 +23,20 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import Adapter.ListViewObjectAdapter;
 import DataModel.Group;
+import DataModel.Product;
+import Helpers.DataLoaderHelper;
 import Helpers.HttpHelper;
 import Helpers.RamHelper;
 import Helpers.RtlSupportHelper;
 import Helpers.ServerAddress;
+import Helpers.SharedPrefHelper;
+import Intefaces.CallBack;
 import Intefaces.CallBackAsync;
+import Intefaces.CallBackYes;
 import Intefaces.ListViewItemINTERFACE;
 
 public class MainActivity extends AppCompatActivity
@@ -45,8 +52,9 @@ public class MainActivity extends AppCompatActivity
     private NavigationDrawerFragment mNavigationDrawerFragment;
 
 
-
     private CharSequence mTitle;
+    private boolean productsPage = false;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,57 +62,9 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         context = this;
         listView = (ListView) findViewById(R.id.listView);
-// Load Groups
-        new HttpHelper().post(context, ServerAddress.funcFile, "tag=groups", new CallBackAsync() {
-            @Override
-            public void onSuccessFinish(String result) {
-            //    Toast.makeText(context, result, Toast.LENGTH_LONG).show();
-                try {
-                    JSONArray jsonArray = new JSONArray(result);
-                    ArrayList<Group> groups = Group.getArrayListFromJsonArray(jsonArray);
-                    listView.setAdapter(new ListViewObjectAdapter<Group>(context, groups));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onError(String errorMessage) {
-                Toast.makeText(context, errorMessage, Toast.LENGTH_LONG).show();
-            }
-        });
-
-// Load Products
-        new HttpHelper().post(context, ServerAddress.funcFile, "tag=products", new CallBackAsync() {
-            @Override
-            public void onSuccessFinish(String result) {
-                //TODO Make Json
-            }
-
-            @Override
-            public void onError(String errorMessage) {
-
-            }
-        });
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Group group = ((Group.Holder) view.getTag()).group;
-                RamHelper.group = group;
-//TODO Start product activity
-                Intent intent = new Intent(context, ProductsActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.sweep_refresh_layout);
         RtlSupportHelper.forceRTLIfSupported((Activity) context);
-
-        //getSupportActionBar().setIcon(R.drawable.ic_drawer2);
-
         prepareActionbar();
-
-
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
@@ -113,6 +73,81 @@ public class MainActivity extends AppCompatActivity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                hideLoading();
+                DataLoaderHelper.syncGroupsOnline(context, new CallBack() {
+                    @Override
+                    public void onSuccess() {
+                        listView.setAdapter(new ListViewObjectAdapter<Group>(context,DataLoaderHelper.groups));
+                        hideLoading();
+                    }
+
+                    @Override
+                    public void onError() {
+                        hideLoading();
+                    }
+                });
+            }
+        });
+
+
+
+        if (!SharedPrefHelper.contain(context, "lastUpdateGroups"))
+            SharedPrefHelper.write(context, "lastUpdateGroups", "0");
+
+        if (!SharedPrefHelper.contain(context, "lastUpdateProducts"))
+            SharedPrefHelper.write(context, "lastUpdateProducts", "0");
+
+        showLoading();
+        DataLoaderHelper.syncGroups(context, new CallBack() {
+            @Override
+            public void onSuccess() {
+                listView.setAdapter(new ListViewObjectAdapter<Group>(context, DataLoaderHelper.groups));
+                hideLoading();
+            }
+
+            @Override
+            public void onError() {
+                hideLoading();
+            }
+        });
+
+
+        // hidden products loading
+        DataLoaderHelper.syncProducts(context, new CallBack() {
+            @Override
+            public void onSuccess() {
+
+            }
+
+            @Override
+            public void onError() {
+
+            }
+        });
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                final Group group = ((Group.Holder) view.getTag()).group;
+                RamHelper.group = group;
+//                //TODO Start product activity
+                Intent intent = new Intent(context, ProductsActivity.class);
+                startActivity(intent);
+
+
+            }
+        });
+
+
+
+
+
+
     }
 
     @Override
@@ -169,5 +204,24 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+
+    public void showLoading() {
+        swipeRefreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                swipeRefreshLayout.setRefreshing(true);
+            }
+        });
+    }
+
+    public void hideLoading() {
+
+        swipeRefreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+    }
 
 }

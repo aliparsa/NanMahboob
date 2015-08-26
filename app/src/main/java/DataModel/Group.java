@@ -28,10 +28,10 @@ import partopars.irdevelopers.nanmahboob.R;
  */
 public class Group implements IListViewItem{
 
-    int groupId;
-    String groupName;
-    String groupImage;
-    Bitmap loadedImage;
+    public int groupId;
+    public String groupName;
+    public String groupImage;
+    public Bitmap loadedImage;
 
 
     public Group(int groupId, String groupName, String groupImage) {

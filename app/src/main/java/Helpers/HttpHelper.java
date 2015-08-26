@@ -48,7 +48,7 @@ public class HttpHelper {
 
                     while ((line = rd.readLine()) != null) {
                         response.append(line);
-                        response.append('\r');
+                        //response.append('\r');
                     }
 
                     String result = response.toString();
