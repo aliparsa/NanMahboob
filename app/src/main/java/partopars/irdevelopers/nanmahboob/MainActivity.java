@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity
         new HttpHelper().post(context, ServerAddress.funcFile, "tag=groups", new CallBackAsync() {
             @Override
             public void onSuccessFinish(String result) {
-                Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+            //    Toast.makeText(context, result, Toast.LENGTH_LONG).show();
                 try {
                     JSONArray jsonArray = new JSONArray(result);
                     ArrayList<Group> groups = Group.getArrayListFromJsonArray(jsonArray);

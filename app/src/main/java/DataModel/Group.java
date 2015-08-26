@@ -29,6 +29,7 @@ public class Group implements IListViewItem{
     int groupId;
     String groupName;
     String groupImage;
+    Bitmap loadedImage;
 
 
     public Group(int groupId, String groupName, String groupImage) {
@@ -89,32 +90,37 @@ public class Group implements IListViewItem{
 
         // fill
         holder.title.setText(this.groupName);
-        ImageLoader imageLoader =ImageLoader.getInstance();
-        imageLoader.init(ImageLoaderConfiguration.createDefault(context));
-        imageLoader.displayImage(this.groupImage, holder.imageView, new ImageLoadingListener() {
-            @Override
-            public void onLoadingStarted(String s, View view) {
-                holder.progressBar.setVisibility(View.VISIBLE);
+        if (loadedImage!=null){
+            holder.imageView.setImageBitmap(loadedImage);
+            holder.progressBar.setVisibility(View.GONE);
+        }else {
+            ImageLoader imageLoader = ImageLoader.getInstance();
+            imageLoader.init(ImageLoaderConfiguration.createDefault(context));
+            imageLoader.displayImage(this.groupImage, holder.imageView, new ImageLoadingListener() {
+                @Override
+                public void onLoadingStarted(String s, View view) {
+                    holder.progressBar.setVisibility(View.VISIBLE);
 
-            }
+                }
 
-            @Override
-            public void onLoadingFailed(String s, View view, FailReason failReason) {
-                holder.progressBar.setVisibility(View.GONE);
-            }
+                @Override
+                public void onLoadingFailed(String s, View view, FailReason failReason) {
+                    holder.progressBar.setVisibility(View.GONE);
+                }
 
-            @Override
-            public void onLoadingComplete(String s, View view, Bitmap bitmap) {
-                holder.imageView.setImageBitmap(bitmap);
-                holder.progressBar.setVisibility(View.GONE);
-            }
+                @Override
+                public void onLoadingComplete(String s, View view, Bitmap bitmap) {
+                    loadedImage = bitmap;
+                    holder.imageView.setImageBitmap(bitmap);
+                    holder.progressBar.setVisibility(View.GONE);
+                }
 
-            @Override
-            public void onLoadingCancelled(String s, View view) {
-                holder.progressBar.setVisibility(View.GONE);
-            }
-        });
-
+                @Override
+                public void onLoadingCancelled(String s, View view) {
+                    holder.progressBar.setVisibility(View.GONE);
+                }
+            });
+        }
 
     }
 
