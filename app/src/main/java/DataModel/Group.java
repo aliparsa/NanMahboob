@@ -19,6 +19,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import Helpers.ImageLoaderHelper;
 import Intefaces.IListViewItem;
 import partopars.irdevelopers.nanmahboob.R;
 
@@ -96,19 +97,7 @@ public class Group implements IListViewItem{
             holder.progressBar.setVisibility(View.GONE);
         }else {
 
-            DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
-            .cacheInMemory(true)
-            .cacheOnDisk(true)
-            .build();
-
-            ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(context)
-            .defaultDisplayImageOptions(defaultOptions)
-            .build();
-
-            ImageLoader.getInstance().init(config);
-            ImageLoader imageLoader = ImageLoader.getInstance();
-            imageLoader.init(ImageLoaderConfiguration.createDefault(context));
-            imageLoader.displayImage(this.groupImage, holder.imageView, new ImageLoadingListener() {
+            ImageLoaderHelper.load(context,this.groupImage,holder.imageView,new ImageLoadingListener() {
                 @Override
                 public void onLoadingStarted(String s, View view) {
                     holder.progressBar.setVisibility(View.VISIBLE);
