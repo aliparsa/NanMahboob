@@ -133,3 +133,4 @@ public class Product implements IListViewItem {
         ProgressBar progressBar;
     }
 }
+
