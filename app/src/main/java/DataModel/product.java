@@ -41,13 +41,12 @@ public class Product implements IListViewItem {
     }
 
 
-
     public static ArrayList<Product> getArrayListFromJsonArray(JSONArray jsonArray) {
-        ArrayList<Product> products  = new ArrayList<Product>();
-        for (int i = 0; i < jsonArray.length();i++){
+        ArrayList<Product> products = new ArrayList<Product>();
+        for (int i = 0; i < jsonArray.length(); i++) {
             try {
                 JSONObject jsonObject = (JSONObject) jsonArray.get(i);
-                Product product = new Product(jsonObject.getInt("productId"), jsonObject.getString("productName"), jsonObject.getString("productDes"),jsonObject.getString("productImage"),jsonObject.getInt("groupId"));
+                Product product = new Product(jsonObject.getInt("productId"), jsonObject.getString("productName"), jsonObject.getString("productDes"), jsonObject.getString("productImage"), jsonObject.getInt("groupId"));
                 products.add(product);
 
             } catch (Exception e) {
@@ -94,10 +93,10 @@ public class Product implements IListViewItem {
 
         // fill
         holder.title.setText(this.productName);
-        if (loadedImage!=null){
+        if (loadedImage != null) {
             holder.imageView.setImageBitmap(loadedImage);
             holder.progressBar.setVisibility(View.GONE);
-        }else {
+        } else {
 
             ImageLoaderHelper.load(context, this.productImage, holder.imageView, new ImageLoadingListener() {
                 @Override
@@ -126,8 +125,9 @@ public class Product implements IListViewItem {
         }
 
     }
+
     public class Holder {
-        public Product  product;
+        public Product product;
         TextView title;
         ImageView imageView;
         ProgressBar progressBar;
