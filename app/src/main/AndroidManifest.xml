@@ -69,6 +69,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="partopars.irdevelopers.nanmahboob.ProductsActivity" />
         </activity>
+        <activity
+            android:name=".BasketActivity"
+            android:label="@string/title_activity_basket"></activity>
     </application>
 
 </manifest>

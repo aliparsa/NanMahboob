@@ -1,20 +1,16 @@
 package Helpers;
 
 import android.content.Context;
-import android.content.Intent;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.ArrayList;
 
-import Adapter.ListViewObjectAdapter;
 import DataModel.Group;
 import DataModel.Product;
 import Intefaces.CallBack;
 import Intefaces.CallBackAsync;
-import Intefaces.CallBackYes;
 
 /**
  * Created by Ali on 8/26/2015.
@@ -143,7 +139,6 @@ public class DataLoaderHelper {
         });
     }
 
-
     public static void syncGroupsOnline(final Context context, final CallBack callBack) {
         new HttpHelper().post(context, ServerAddress.funcFile, "tag=groups", new CallBackAsync() {
             @Override
@@ -152,6 +147,30 @@ public class DataLoaderHelper {
                     JSONArray jsonArray = new JSONArray(result);
                     SharedPrefHelper.write(context, "groups", result);
                     groups = Group.getArrayListFromJsonArray(jsonArray);
+                    callBack.onSuccess();
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    callBack.onError();
+                }
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                callBack.onError();
+
+            }
+        });
+    }
+
+    public static void syncProductsOnline(final Context context, final CallBack callBack) {
+        new HttpHelper().post(context, ServerAddress.funcFile, "tag=products", new CallBackAsync() {
+            @Override
+            public void onSuccessFinish(String result) {
+                try {
+                    JSONArray jsonArray = new JSONArray(result);
+                    SharedPrefHelper.write(context, "products", result);
+                    products = Product.getArrayListFromJsonArray(jsonArray);
                     callBack.onSuccess();
 
                 } catch (JSONException e) {

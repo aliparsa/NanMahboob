@@ -18,4 +18,5 @@
     <string name="title_activity_register">ثبت نام</string>
     <string name="title_activity_contact_us">تماس با ما</string>
     <string name="title_activity_product_info">ProductInfoActivity</string>
+    <string name="title_activity_basket">BasketActivity</string>
 </resources>
