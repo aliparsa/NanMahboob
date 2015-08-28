@@ -107,8 +107,6 @@ public class NavigationDrawerFragment extends Fragment {
 
 
         ArrayList<NavigationDrawerItem> navigationDrawerItems = new ArrayList<NavigationDrawerItem>();
-        navigationDrawerItems.add(new NavigationDrawerItem("محصولات",R.drawable.breadnavi));
-        navigationDrawerItems.add(new NavigationDrawerItem("خرید سریع",R.drawable.breadnavi));
         navigationDrawerItems.add(new NavigationDrawerItem("ثبت نام",R.drawable.breadnavi));
         navigationDrawerItems.add(new NavigationDrawerItem("تماس با ما",R.drawable.breadnavi));
         navigationDrawerItems.add(new NavigationDrawerItem("تنظیمات",R.drawable.breadnavi));
@@ -131,23 +129,16 @@ public class NavigationDrawerFragment extends Fragment {
                 //Toast.makeText(context,i+"",Toast.LENGTH_SHORT).show();
                 Intent intent;
                 switch (i){
+
                     case 1:
-                         intent = new Intent(context,ProductsActivity.class);
-                        startActivity(intent);
-                        break;
-                    case 2:
-                         intent = new Intent(context,QuickBuyActivity.class);
-                        startActivity(intent);
-                        break;
-                    case 3:
                          intent = new Intent(context,RegisterActivity.class);
                         startActivity(intent);
                         break;
-                    case 4:
+                    case 2:
                         intent = new Intent(context,ContactUsActivity.class);
                         startActivity(intent);
                         break;
-                    case 5:
+                    case 3:
                         intent = new Intent(context,SettingsActivity.class);
                         startActivity(intent);
                         break;

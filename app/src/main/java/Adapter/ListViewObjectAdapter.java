@@ -33,6 +33,7 @@ public class ListViewObjectAdapter<T> extends ArrayAdapter<T> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
         View view = convertView;
         if(items.get(position) instanceof IListViewItem) {
             IListViewItem item = (IListViewItem) items.get(position);

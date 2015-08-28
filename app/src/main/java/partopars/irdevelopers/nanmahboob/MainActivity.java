@@ -44,14 +44,7 @@ public class MainActivity extends AppCompatActivity
 
     Context context;
     ListView listView;
-
-
-    /**
-     * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
-     */
     private NavigationDrawerFragment mNavigationDrawerFragment;
-
-
     private CharSequence mTitle;
     private boolean productsPage = false;
     private SwipeRefreshLayout swipeRefreshLayout;
