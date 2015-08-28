@@ -46,7 +46,7 @@ public class ProductInfoActivity extends AppCompatActivity {
         product = RamHelper.product;
 
         if (product != null) {
-            ((Activity) context).setTitle(product.productName);
+            ((Activity) context).setTitle("بازگشت");
             imageView.setImageBitmap(product.loadedImage);
             textViewName.setText(product.productName);
             textViewDes.setText(product.productDes);

@@ -71,7 +71,15 @@
         </activity>
         <activity
             android:name=".BasketActivity"
-            android:label="@string/title_activity_basket"></activity>
+            android:label="@string/title_activity_basket" />
+        <activity
+            android:name="partopars.irdevelopers.NanMahboob.contact_us"
+            android:label="@string/title_activity_contact_us" >
+        </activity>
+        <activity
+            android:name="partopars.irdevelopers.NanMahboob.activity_contact_us"
+            android:label="@string/title_activity_activity_contact_us" >
+        </activity>
     </application>
 
 </manifest>

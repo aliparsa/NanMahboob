@@ -31,6 +31,8 @@
         android:text="نام"
         android:layout_weight=".5"
         android:id="@+id/product_name"
+        android:shadowColor="#2d2d2d"
+        android:shadowRadius="10"
         android:textColor="#fff"
         android:gravity="right"
         android:padding="20dp"
@@ -43,6 +45,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="قیمت"
         android:layout_weight=".5"
+        android:shadowColor="#2d2d2d"
+        android:shadowRadius="10"
         android:id="@+id/product_price"
         android:textColor="#fff"
         android:gravity="right"
@@ -55,11 +59,14 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+
         <Views.TextViewFont
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:text="Description "
-            android:textSize="27sp"
+            android:lineSpacingExtra="6dp"
+            android:layout_marginRight="4dp"
+            android:textSize="22sp"
             android:background="#98eff3f3"
             android:textColor="#646464"
             android:gravity="right"
