@@ -5,6 +5,6 @@ package Helpers;
  */
 public class ServerAddress {
 
-    public static String funcFile = "http://192.168.1.7/parto/func.php";
+    public static String funcFile = "http://192.168.1.13/parto/func.php";
 
 }

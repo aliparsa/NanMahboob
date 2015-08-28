@@ -1,18 +1,47 @@
 package partopars.irdevelopers.nanmahboob;
 
+import android.app.Activity;
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
+import DataModel.Product;
+import Helpers.RamHelper;
+import Helpers.RtlSupportHelper;
+import Views.TextViewFont;
 import partopars.irdevelopers.nanmahboob.R;
 
 public class ProductInfoActivity extends AppCompatActivity {
+    Context context;
+    ImageView imageView;
+    TextViewFont textViewName;
+    TextViewFont textViewDes;
+    Product product;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_info);
+        context = this;
+
+
+        RtlSupportHelper.forceRTLIfSupported((Activity) context);
+
+        imageView = (ImageView) findViewById(R.id.product_image);
+        textViewName = (TextViewFont) findViewById(R.id.product_name);
+        textViewDes = (TextViewFont) findViewById(R.id.product_des);
+
+
+        product = RamHelper.product;
+
+        if (product != null) {
+            imageView.setImageBitmap(product.loadedImage);
+            textViewName.setText(product.productName);
+            textViewDes.setText(product.productDes);
+        }
     }
 
     @Override

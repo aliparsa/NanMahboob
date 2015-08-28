@@ -6,8 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.text.method.CharacterPickerDialog;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -46,8 +49,18 @@ public class ProductsActivity extends ActionBarActivity {
             // start main activity and finisah this activity
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
-        }
 
+
+        }
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                final Product product = ((Product.Holder) view.getTag()).product;
+                RamHelper.product = product;
+                Intent intent = new Intent(context, ProductInfoActivity.class);
+                startActivity(intent);
+            }
+        });
         showLoading();
         ProductsHealper.getProducts(context, new CallBackProduct() {
             @Override
