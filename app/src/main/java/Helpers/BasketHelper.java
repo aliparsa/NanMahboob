@@ -12,19 +12,19 @@ public class BasketHelper {
 
     private static ArrayList<Basket> baskets;
 
-    public static void addToBasket(Basket basket) {
+    public static void addToBasket(Product product,  int count) {
 
-        if (isProductExistInBasket(basket.product)) {
+        if (isProductExistInBasket(product)) {
             // product already exist in basket
             for (Basket tempbasket : baskets) {
-                if (tempbasket.product.productId == basket.product.productId) {
-                    tempbasket.count += basket.count;
+                if (tempbasket.product.productId == product.productId) {
+                    tempbasket.count += count;
                     return;
                 }
             }
         } else {
             // product don't exist in basket
-            baskets.add(basket);
+            baskets.add(new Basket(product,count));
         }
 
 
@@ -50,4 +50,19 @@ public class BasketHelper {
     public static void clearBasket() {
         baskets.clear();
     }
+
+    public static void removeFromBasket(Product product){
+        if (isProductExistInBasket(product)){
+            for (Basket basket : baskets) {
+                if (basket.product.productId == product.productId) {
+                    if ( basket.count>1 )
+                        basket.count-=1;
+                    else
+                        baskets.remove(basket);
+                }
+            }
+        }
+    }
+
+
 }

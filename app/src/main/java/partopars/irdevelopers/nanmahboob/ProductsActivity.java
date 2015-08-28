@@ -15,10 +15,11 @@ import java.util.ArrayList;
 import Adapter.ListViewObjectAdapter;
 import DataModel.Group;
 import DataModel.Product;
-import Helpers.DataLoaderHelper;
+import Helpers.ProductsHealper;
 import Helpers.RamHelper;
 import Helpers.RtlSupportHelper;
 import Intefaces.CallBack;
+import Intefaces.CallBackProduct;
 
 public class ProductsActivity extends ActionBarActivity {
 
@@ -47,44 +48,44 @@ public class ProductsActivity extends ActionBarActivity {
             startActivity(intent);
         }
 
-        DataLoaderHelper.syncProducts(context, new CallBack() {
+        showLoading();
+        ProductsHealper.getProducts(context, new CallBackProduct() {
             @Override
-            public void onSuccess() {
-                ArrayList<Product> products = new ArrayList<Product>();
-                for (Product product : DataLoaderHelper.products) {
-                    if (product.groupId == group.groupId)
-                        products.add(product);
-                }
-                listView.setAdapter(new ListViewObjectAdapter<Product>(context, products));
+            public void onSuccess(ArrayList<Product> products) {
+                hideLoading();
+                listView.setAdapter(new ListViewObjectAdapter<Product>(context, ProductsHealper.getProductsOfGroup(products,group)));
             }
 
             @Override
-            public void onError() {
+            public void onError(String errorMessage) {
+                hideLoading();
 
             }
         });
 
+
+
+
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                DataLoaderHelper.syncProductsOnline(context, new CallBack() {
+
+                ProductsHealper.syncOnline(context, new CallBackProduct() {
                     @Override
-                    public void onSuccess() {
-                        ArrayList<Product> products = new ArrayList<Product>();
-                        for (Product product : DataLoaderHelper.products) {
-                            if (product.groupId == group.groupId)
-                                products.add(product);
-                        }
-                        listView.setAdapter(new ListViewObjectAdapter<Product>(context, products));
+                    public void onSuccess(ArrayList<Product> products) {
+
+                        listView.setAdapter(new ListViewObjectAdapter<Product>(context, ProductsHealper.getProductsOfGroup(products,group)));
                         hideLoading();
                     }
 
                     @Override
-                    public void onError() {
+                    public void onError(String errorMessage) {
                         hideLoading();
 
                     }
                 });
+
+
             }
         });
 

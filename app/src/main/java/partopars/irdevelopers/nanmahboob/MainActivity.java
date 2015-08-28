@@ -1,43 +1,33 @@
 package partopars.irdevelopers.nanmahboob;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.app.ActionBar;
-import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.method.CharacterPickerDialog;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.v4.widget.DrawerLayout;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Toast;
-
-import org.json.JSONArray;
-import org.json.JSONException;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import Adapter.ListViewObjectAdapter;
 import DataModel.Group;
-import DataModel.Product;
-import Helpers.DataLoaderHelper;
-import Helpers.HttpHelper;
+import Helpers.FirstRunHelper;
+import Helpers.GroupsHelper;
+import Helpers.ProductsHealper;
 import Helpers.RamHelper;
 import Helpers.RtlSupportHelper;
-import Helpers.ServerAddress;
-import Helpers.SharedPrefHelper;
 import Intefaces.CallBack;
-import Intefaces.CallBackAsync;
-import Intefaces.CallBackYes;
-import Intefaces.ListViewItemINTERFACE;
+import Intefaces.CallBackGroup;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
@@ -45,7 +35,7 @@ public class MainActivity extends AppCompatActivity
     Context context;
     ListView listView;
     private NavigationDrawerFragment mNavigationDrawerFragment;
-    private CharSequence mTitle;
+    //private CharSequence mTitle;
     private boolean productsPage = false;
     private SwipeRefreshLayout swipeRefreshLayout;
 
@@ -60,7 +50,10 @@ public class MainActivity extends AppCompatActivity
         prepareActionbar();
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
-        mTitle = getTitle();
+        //     mTitle = getTitle();
+
+        FirstRunHelper.init(context);
+
 
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
@@ -71,15 +64,15 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onRefresh() {
                 hideLoading();
-                DataLoaderHelper.syncGroupsOnline(context, new CallBack() {
+                GroupsHelper.syncOnline(context, new CallBackGroup() {
                     @Override
-                    public void onSuccess() {
-                        listView.setAdapter(new ListViewObjectAdapter<Group>(context,DataLoaderHelper.groups));
+                    public void onSuccess(ArrayList<Group> groups) {
+                        listView.setAdapter(new ListViewObjectAdapter<Group>(context, groups));
                         hideLoading();
                     }
 
                     @Override
-                    public void onError() {
+                    public void onError(String errorMessage) {
                         hideLoading();
                     }
                 });
@@ -87,40 +80,20 @@ public class MainActivity extends AppCompatActivity
         });
 
 
-
-        if (!SharedPrefHelper.contain(context, "lastUpdateGroups"))
-            SharedPrefHelper.write(context, "lastUpdateGroups", "0");
-
-        if (!SharedPrefHelper.contain(context, "lastUpdateProducts"))
-            SharedPrefHelper.write(context, "lastUpdateProducts", "0");
-
         showLoading();
-        DataLoaderHelper.syncGroups(context, new CallBack() {
+        GroupsHelper.getGroups(context, new CallBackGroup() {
             @Override
-            public void onSuccess() {
-                listView.setAdapter(new ListViewObjectAdapter<Group>(context, DataLoaderHelper.groups));
+            public void onSuccess(ArrayList<Group> groups) {
+                listView.setAdapter(new ListViewObjectAdapter<Group>(context, groups));
                 hideLoading();
             }
 
             @Override
-            public void onError() {
+            public void onError(String errorMessage) {
                 hideLoading();
             }
         });
 
-
-        // hidden products loading
-        DataLoaderHelper.syncProducts(context, new CallBack() {
-            @Override
-            public void onSuccess() {
-
-            }
-
-            @Override
-            public void onError() {
-
-            }
-        });
 
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -128,17 +101,10 @@ public class MainActivity extends AppCompatActivity
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 final Group group = ((Group.Holder) view.getTag()).group;
                 RamHelper.group = group;
-//                //TODO Start product activity
                 Intent intent = new Intent(context, ProductsActivity.class);
                 startActivity(intent);
-
-
             }
         });
-
-
-
-
 
 
     }
