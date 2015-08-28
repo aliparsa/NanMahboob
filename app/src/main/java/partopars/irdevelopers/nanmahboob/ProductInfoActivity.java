@@ -2,6 +2,7 @@ package partopars.irdevelopers.nanmahboob;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -38,9 +39,14 @@ public class ProductInfoActivity extends AppCompatActivity {
         product = RamHelper.product;
 
         if (product != null) {
+            ((Activity) context).setTitle(product.productName);
             imageView.setImageBitmap(product.loadedImage);
             textViewName.setText(product.productName);
             textViewDes.setText(product.productDes);
+        }else {
+
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
         }
     }
 

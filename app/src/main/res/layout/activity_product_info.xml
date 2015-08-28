@@ -60,8 +60,8 @@
             android:layout_height="fill_parent"
             android:text="Description "
             android:textSize="27sp"
-            android:background="#98aeb2b2"
-            android:textColor="#FFF"
+            android:background="#98eff3f3"
+            android:textColor="#646464"
             android:gravity="right"
             android:id="@+id/product_des"
 
