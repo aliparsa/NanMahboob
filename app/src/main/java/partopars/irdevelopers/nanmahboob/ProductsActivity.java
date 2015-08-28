@@ -1,6 +1,7 @@
 package partopars.irdevelopers.nanmahboob;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -59,6 +60,16 @@ public class ProductsActivity extends ActionBarActivity {
                 RamHelper.product = product;
                 Intent intent = new Intent(context, ProductInfoActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Product product = ((Product.Holder) view.getTag()).product;
+                AlertDialog.Builder builder = new AlertDialog.Builder(context)
+                        .setTitle(product.productName);
+                return true;
             }
         });
         showLoading();
