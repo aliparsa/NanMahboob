@@ -21,10 +21,10 @@ public class GroupsHelper {
 
     public static void getGroups(final Context context, final CallBackGroup callBack) {
 
-        if(SharedPrefHelper.contain(context,"groups")){
+        if(SharedPrefHelper.contain(context,FinalValuesHelepr.GROUPS)){
             //read from shared pref
             try {
-                JSONArray jsonArray = new JSONArray(SharedPrefHelper.read(context, "groups"));
+                JSONArray jsonArray = new JSONArray(SharedPrefHelper.read(context, FinalValuesHelepr.GROUPS));
                 groups = Group.getArrayListFromJsonArray(jsonArray);
                 if (groups.size()>1){
                     // it's ok we can return it !
@@ -43,38 +43,7 @@ public class GroupsHelper {
         }
     }
 
-    /*public static void syncGroups(final Context context, final CallBack callBack) {
-        new HttpHelper().post(context, ServerAddress.funcFile, "tag=lastUpdateGroups", new CallBackAsync() {
-            @Override
-            public void onSuccessFinish(String LastUpdateGroup) {
-                Integer localLastUpdate = Integer.parseInt(SharedPrefHelper.read(context, "lastUpdateGroups"));
-                serverLastUpdateGroup = Integer.parseInt(LastUpdateGroup);
 
-                if (serverLastUpdateGroup > localLastUpdate) {
-                    getGroups(context, callBack);
-                } else {
-                    /// local load groups
-
-                    try {
-                        JSONArray jsonArray = new JSONArray(SharedPrefHelper.read(context, "groups"));
-                        groups = Group.getArrayListFromJsonArray(jsonArray);
-                        callBack.onSuccess();
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                        callBack.onError();
-                    }
-                }
-
-            }
-
-            @Override
-            public void onError(String errorMessage) {
-                callBack.onError();
-
-            }
-        });
-    }*/
 
     public static void syncOnline(final Context context, final CallBackGroup callBack) {
         new HttpHelper().post(context, ServerAddress.funcFile, "tag=groups", new CallBackAsync() {
@@ -82,7 +51,7 @@ public class GroupsHelper {
             public void onSuccessFinish(String result) {
                 try {
                     JSONArray jsonArray = new JSONArray(result);
-                    SharedPrefHelper.write(context, "groups", result);
+                    SharedPrefHelper.write(context, FinalValuesHelepr.GROUPS, result);
                     groups = Group.getArrayListFromJsonArray(jsonArray);
                     callBack.onSuccess(groups);
 
@@ -107,7 +76,7 @@ public class GroupsHelper {
             public void onSuccessFinish(String result) {
                 try {
                     JSONArray jsonArray = new JSONArray(result);
-                    SharedPrefHelper.write(context, "groups", result);
+                    SharedPrefHelper.write(context, FinalValuesHelepr.GROUPS, result);
 
                 } catch (JSONException e) {
                     e.printStackTrace();

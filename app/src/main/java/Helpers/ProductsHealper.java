@@ -116,7 +116,7 @@ public class ProductsHealper {
             public void onSuccessFinish(String result) {
                 try {
                     JSONArray jsonArray = new JSONArray(result);
-                    SharedPrefHelper.write(context, "products", result);
+                    SharedPrefHelper.write(context, FinalValuesHelepr.PRODUCTS, result);
 
                 } catch (JSONException e) {
                     e.printStackTrace();

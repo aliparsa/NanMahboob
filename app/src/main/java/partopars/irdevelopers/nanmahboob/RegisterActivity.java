@@ -7,12 +7,22 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import Helpers.FinalValuesHelepr;
 import Helpers.RtlSupportHelper;
+import Helpers.SharedPrefHelper;
+import Views.EditTextFont;
 import partopars.irdevelopers.nanmahboob.R;
 
 public class RegisterActivity extends ActionBarActivity {
 
     private Context context;
+    EditTextFont name;
+    EditTextFont tel;
+    EditTextFont address;
+    EditTextFont email;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +32,19 @@ public class RegisterActivity extends ActionBarActivity {
         context=this;
 
         RtlSupportHelper.forceRTLIfSupported((Activity) context);
+
+        name = (EditTextFont) findViewById(R.id.rig_name);
+        tel = (EditTextFont) findViewById(R.id.rig_tel);
+        address = (EditTextFont) findViewById(R.id.rig_address);
+        email = (EditTextFont) findViewById(R.id.rig_email);
+
+        name.setText(SharedPrefHelper.read(context, FinalValuesHelepr.NAME));
+        tel.setText(SharedPrefHelper.read(context, FinalValuesHelepr.TEL));
+        address.setText(SharedPrefHelper.read(context, FinalValuesHelepr.ADDRESS));
+        email.setText(SharedPrefHelper.read(context, FinalValuesHelepr.EMAIL));
+
+
+
     }
 
     @Override
@@ -39,7 +62,13 @@ public class RegisterActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_rigester) {
+            SharedPrefHelper.write(context,FinalValuesHelepr.NAME,name.getText().toString());
+            SharedPrefHelper.write(context,FinalValuesHelepr.TEL,tel.getText().toString());
+            SharedPrefHelper.write(context,FinalValuesHelepr.ADDRESS,address.getText().toString());
+            SharedPrefHelper.write(context,FinalValuesHelepr.EMAIL,email.getText().toString());
+
+            ((RegisterActivity) context).finish();
             return true;
         }
 

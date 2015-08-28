@@ -8,12 +8,13 @@ import android.content.Context;
 public class FirstRunHelper {
 
     public  static void init(Context context){
-        if (!SharedPrefHelper.contain(context, "lastUpdateGroups"))
-            SharedPrefHelper.write(context, "lastUpdateGroups", "0");
 
-        if (!SharedPrefHelper.contain(context, "lastUpdateProducts"))
-            SharedPrefHelper.write(context, "lastUpdateProducts", "0");
-
+        if (!SharedPrefHelper.contain(context,FinalValuesHelepr.NAME)) {
+            SharedPrefHelper.write(context, FinalValuesHelepr.NAME, "");
+            SharedPrefHelper.write(context, FinalValuesHelepr.TEL, "");
+            SharedPrefHelper.write(context, FinalValuesHelepr.ADDRESS,"");
+            SharedPrefHelper.write(context, FinalValuesHelepr.EMAIL,"");
+        }
         GroupsHelper.syncSilent(context);
 
         ProductsHealper.syncSilent(context);
