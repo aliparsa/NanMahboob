@@ -7,12 +7,21 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import Helpers.FinalValuesHelepr;
 import Helpers.RtlSupportHelper;
+import Helpers.SharedPrefHelper;
+import Views.EditTextFont;
 import partopars.irdevelopers.nanmahboob.R;
 
 public class ContactUsActivity extends ActionBarActivity {
 
     private Context context;
+
+    EditTextFont name;
+    EditTextFont tel;
+    EditTextFont message;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +31,13 @@ public class ContactUsActivity extends ActionBarActivity {
         context=this;
 
         RtlSupportHelper.forceRTLIfSupported((Activity) context);
+
+        name = (EditTextFont) findViewById(R.id.rig_name);
+        tel = (EditTextFont) findViewById(R.id.rig_tel);
+        message = (EditTextFont) findViewById(R.id.body_message);
+
+
+
     }
 
     @Override
@@ -39,7 +55,10 @@ public class ContactUsActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_contact_us) {
+            //TODO send message ????
+
+            ((RegisterActivity) context).finish();
             return true;
         }
 
