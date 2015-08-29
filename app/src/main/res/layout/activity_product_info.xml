@@ -66,11 +66,12 @@
             android:text="Description "
             android:lineSpacingExtra="6dp"
             android:layout_marginRight="4dp"
-            android:textSize="22sp"
+            android:textSize="20sp"
             android:background="#98eff3f3"
             android:textColor="#646464"
             android:gravity="right"
             android:id="@+id/product_des"
+            android:layout_margin="5dp"
 
             />
     </RelativeLayout>

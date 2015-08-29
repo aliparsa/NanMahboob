@@ -27,6 +27,7 @@ public class ProductInfoActivity extends AppCompatActivity {
     ImageView imageView;
     TextViewFont textViewName;
     TextViewFont textViewDes;
+    TextViewFont textViewPrice;
     Product product;
 
     @Override
@@ -41,6 +42,7 @@ public class ProductInfoActivity extends AppCompatActivity {
         imageView = (ImageView) findViewById(R.id.product_image);
         textViewName = (TextViewFont) findViewById(R.id.product_name);
         textViewDes = (TextViewFont) findViewById(R.id.product_des);
+        textViewPrice = (TextViewFont) findViewById(R.id.product_price);
 
 
         product = RamHelper.product;
@@ -50,6 +52,7 @@ public class ProductInfoActivity extends AppCompatActivity {
             imageView.setImageBitmap(product.loadedImage);
             textViewName.setText(product.productName);
             textViewDes.setText(product.productDes);
+            textViewPrice.setText(product.productPrice);
         }else {
 
             Intent intent = new Intent(this, MainActivity.class);

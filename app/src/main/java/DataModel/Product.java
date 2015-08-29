@@ -18,6 +18,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import Helpers.ImageLoaderHelper;
+import Helpers.ObjectToJsonConvertor;
 import Intefaces.IListViewItem;
 import partopars.irdevelopers.nanmahboob.R;
 
@@ -25,19 +26,25 @@ import partopars.irdevelopers.nanmahboob.R;
  * Created by Ali on 8/26/2015.
  */
 public class Product implements IListViewItem {
-    public int productId;
+    public Integer productId;
     public String productName;
     public String productDes;
     public String productImage;
-    public int groupId;
+    public String productPrice;
+    public Integer groupId;
     public Bitmap loadedImage;
 
-    public Product(int productId, String productName, String productDes, String productImage, int groupId) {
+    public Product(int productId, String productName, String productDes, String productImage, int groupId,String productPrice) {
         this.productId = productId;
         this.productName = productName;
         this.productDes = productDes;
         this.productImage = productImage;
         this.groupId = groupId;
+        this.productPrice=productPrice;
+    }
+
+    public Product() {
+
     }
 
 
@@ -46,7 +53,8 @@ public class Product implements IListViewItem {
         for (int i = 0; i < jsonArray.length(); i++) {
             try {
                 JSONObject jsonObject = (JSONObject) jsonArray.get(i);
-                Product product = new Product(jsonObject.getInt("productId"), jsonObject.getString("productName"), jsonObject.getString("productDes"), jsonObject.getString("productImage"), jsonObject.getInt("groupId"));
+                Product product = new ObjectToJsonConvertor<Product>().jsonToObject(jsonObject,new Product());
+                //Product product = new Product(jsonObject.getInt("productId"), jsonObject.getString("productName"), jsonObject.getString("productDes"), jsonObject.getString("productImage"), jsonObject.getInt("groupId"), jsonObject.getString("productPrice"));
                 products.add(product);
 
             } catch (Exception e) {
@@ -85,6 +93,8 @@ public class Product implements IListViewItem {
         if (holder.title == null)
             holder.title = (TextView) view.findViewById(R.id.item_product_name);
 
+
+
         if (holder.imageView == null)
             holder.imageView = (ImageView) view.findViewById(R.id.item_product_image);
 
@@ -93,6 +103,7 @@ public class Product implements IListViewItem {
 
         // fill
         holder.title.setText(this.productName);
+
         if (loadedImage != null) {
             holder.imageView.setImageBitmap(loadedImage);
             holder.progressBar.setVisibility(View.GONE);

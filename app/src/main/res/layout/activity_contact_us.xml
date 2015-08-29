@@ -39,9 +39,7 @@
                     android:layout_height="240dp"
                     android:id="@+id/imageView"
                     android:scaleType="fitXY"
-                    android:src="@drawable/contact_us"
-
-                    />
+                    android:src="@drawable/contact_us" />
 
                 <Views.TextViewFont
                     android:layout_width="fill_parent"
