@@ -79,6 +79,7 @@
             android:src="@drawable/basket"
             android:textColor="#fff"
             android:scaleType="fitXY"
+            android:layout_margin="4dp"
             android:alpha="1" />
 
         <ImageView
