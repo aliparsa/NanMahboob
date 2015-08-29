@@ -66,6 +66,8 @@ public class ProductInfoActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intent=new Intent(context,BasketActivity.class);
+            startActivity(intent);
             return true;
         }
 
