@@ -64,5 +64,22 @@ public class BasketHelper {
         }
     }
 
+    public static Integer getCountAll(){
+        Integer sum=0;
+        for(Basket basket : baskets){
+            sum+=basket.count;
+        }
+        return sum;
+
+    }
+
+    public static Integer getPriceAll(){
+        Integer sumPrice=0;
+        for(Basket basket : baskets){
+            sumPrice+=Integer.parseInt(basket.product.productPrice)*basket.count;
+        }
+        return sumPrice;
+    }
+
 
 }

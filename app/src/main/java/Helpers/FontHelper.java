@@ -18,89 +18,70 @@ import android.widget.TextView;
 public class FontHelper {
 
 
-    public static void SetFontNormal(Context context, Fonts font, TextView view) {
-
-        SetFont(context, font, view, Typeface.NORMAL);
-
-    }
-
-    public static void SetFontNormal(Context context, Fonts font, Button view) {
-
-        SetFont(context, font, view, Typeface.NORMAL);
-
-    }
-
-
-
-    public static void SetFontBold(Context context, Fonts font, TextView view) {
-
-        SetFont(context, font, view, Typeface.BOLD);
-
-    }
-
-    public static void SetFontItalic(Context context, Fonts font, TextView view) {
-
-        SetFont(context, font, view, Typeface.ITALIC);
-
-    }
-
-    public static void SetFontBoldItalic(Context context, Fonts font, TextView view) {
-
-        SetFont(context, font, view, Typeface.BOLD_ITALIC);
-
-    }
-
-    public static void SetFont(Context context, Fonts font, TextView view, int typeFace) {
+    public static void SetFontNormal(Context context, TextView view) {
         Typeface tf;
-
-        switch (font) {
-            case MAIN_FONT:
-                tf = Typeface.createFromAsset(context.getAssets(), "fonts/BKOODB.TTF");
-                view.setTypeface(tf, typeFace);
-                break;
-            case BKAMRAN:
-                tf = Typeface.createFromAsset(context.getAssets(), "fonts/BKAMRAN.TTF");
-                view.setTypeface(tf, typeFace);
-                break;
-            case BKOODAK:
-                tf = Typeface.createFromAsset(context.getAssets(), "fonts/BKOODB.TTF");
-                view.setTypeface(tf, typeFace);
-                break;
-            case YEKAN:
-                tf = Typeface.createFromAsset(context.getAssets(), "fonts/Yekan.ttf");
-                view.setTypeface(tf, typeFace);
-                break;
-
-        }
+        tf = Typeface.createFromAsset(context.getAssets(), "fonts/Yekan.ttf");
+        view.setTypeface(tf);
     }
 
-    public static void SetFont(Context context, Fonts font, Button view, int typeFace) {
+    public static void SetFontNormal(Context context, Button view) {
         Typeface tf;
-
-
-        switch (font) {
-            case MAIN_FONT:
-                tf = Typeface.createFromAsset(context.getAssets(), "fonts/BKOODB.TTF");
-                view.setTypeface(tf, typeFace);
-                break;
-            case BKAMRAN:
-                tf = Typeface.createFromAsset(context.getAssets(), "fonts/BKAMRAN.TTF");
-                view.setTypeface(tf, typeFace);
-                break;
-            case BKOODAK:
-                tf = Typeface.createFromAsset(context.getAssets(), "fonts/BKOODB.TTF");
-                view.setTypeface(tf, typeFace);
-                break;
-        }
+        tf = Typeface.createFromAsset(context.getAssets(), "fonts/Yekan.ttf");
+        view.setTypeface(tf);
     }
 
 
-    public enum Fonts {
+//    public static void SetFont(Context context, Fonts font, TextView view, int typeFace) {
+//        Typeface tf;
+//
+//        switch (font) {
+//            case MAIN_FONT:
+//                tf = Typeface.createFromAsset(context.getAssets(), "fonts/BKOODB.TTF");
+//                view.setTypeface(tf, typeFace);
+//                break;
+//            case BKAMRAN:
+//                tf = Typeface.createFromAsset(context.getAssets(), "fonts/BKAMRAN.TTF");
+//                view.setTypeface(tf, typeFace);
+//                break;
+//            case BKOODAK:
+//                tf = Typeface.createFromAsset(context.getAssets(), "fonts/BKOODB.TTF");
+//                view.setTypeface(tf, typeFace);
+//                break;
+//            case YEKAN:
+//                tf = Typeface.createFromAsset(context.getAssets(), "fonts/Yekan.ttf");
+//                view.setTypeface(tf, typeFace);
+//                break;
+//
+//        }
+//    }
 
-        MAIN_FONT,
-        BKAMRAN,
-        BKOODAK,
-        YEKAN
-    }
+//    public static void SetFont(Context context, Fonts font, Button view, int typeFace) {
+//        Typeface tf;
+//
+//
+//        switch (font) {
+//            case MAIN_FONT:
+//                tf = Typeface.createFromAsset(context.getAssets(), "fonts/BKOODB.TTF");
+//                view.setTypeface(tf, typeFace);
+//                break;
+//            case BKAMRAN:
+//                tf = Typeface.createFromAsset(context.getAssets(), "fonts/BKAMRAN.TTF");
+//                view.setTypeface(tf, typeFace);
+//                break;
+//            case BKOODAK:
+//                tf = Typeface.createFromAsset(context.getAssets(), "fonts/BKOODB.TTF");
+//                view.setTypeface(tf, typeFace);
+//                break;
+//        }
+//    }
+//
+//
+//    public enum Fonts {
+//
+//        MAIN_FONT,
+//        BKAMRAN,
+//        BKOODAK,
+//        YEKAN
+//    }
 
 }

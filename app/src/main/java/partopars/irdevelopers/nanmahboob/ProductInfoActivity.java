@@ -20,7 +20,6 @@ import Helpers.RamHelper;
 import Helpers.RtlSupportHelper;
 import Views.ButtonFont;
 import Views.TextViewFont;
-import partopars.irdevelopers.nanmahboob.R;
 
 public class ProductInfoActivity extends AppCompatActivity {
     Context context;
@@ -29,6 +28,7 @@ public class ProductInfoActivity extends AppCompatActivity {
     TextViewFont textViewDes;
     TextViewFont textViewPrice;
     Product product;
+    ButtonFont add_to_basket;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,42 @@ public class ProductInfoActivity extends AppCompatActivity {
         textViewName = (TextViewFont) findViewById(R.id.product_name);
         textViewDes = (TextViewFont) findViewById(R.id.product_des);
         textViewPrice = (TextViewFont) findViewById(R.id.product_price);
+        add_to_basket = (ButtonFont) findViewById(R.id.add_to_basket_product_info);
 
+        add_to_basket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                View view2 = inflater.inflate(R.layout.dialog_add_to_basket, null);
+
+                final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                final NumberPicker np = (NumberPicker) view2.findViewById(R.id.numberPicker);
+                ButtonFont add = (ButtonFont) view2.findViewById(R.id.btn_add);
+
+                String[] nums = new String[100];
+                for(int i=0; i<nums.length; i++)
+                    nums[i] = Integer.toString(i+1);
+
+                np.setMinValue(1);
+                np.setMaxValue(100);
+                np.setWrapSelectorWheel(false);
+                np.setDisplayedValues(nums);
+                np.setValue(1);
+
+                builder.setView(view2);
+                final AlertDialog alertDialog = builder.show();
+
+                add.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        BasketHelper.addToBasket(product, np.getValue());
+                        alertDialog.dismiss();
+                        Toast.makeText(context,product.productName+"\n"+" به سبد خرید افزوده شد " ,Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+            }
+        });
 
         product = RamHelper.product;
 
@@ -81,40 +116,7 @@ public class ProductInfoActivity extends AppCompatActivity {
             return true;
         }
 
-        if (id == R.id.action_add_to_basket) {
 
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View view = inflater.inflate(R.layout.add_to_basket_dialog, null);
-
-            final AlertDialog.Builder builder = new AlertDialog.Builder(context);
-            final NumberPicker np = (NumberPicker) view.findViewById(R.id.numberPicker);
-            ButtonFont add = (ButtonFont) view.findViewById(R.id.btn_add);
-
-            String[] nums = new String[100];
-            for(int i=0; i<nums.length; i++)
-                nums[i] = Integer.toString(i+1);
-
-            np.setMinValue(1);
-            np.setMaxValue(100);
-            np.setWrapSelectorWheel(false);
-            np.setDisplayedValues(nums);
-            np.setValue(1);
-
-            builder.setView(view);
-            final AlertDialog alertDialog = builder.show();
-
-            add.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    BasketHelper.addToBasket(product, np.getValue());
-                    alertDialog.dismiss();
-                    Toast.makeText(context,product.productName+"\n"+" به سبد خرید افزوده شد " ,Toast.LENGTH_SHORT).show();
-                }
-            });
-
-
-
-        }
 
         return super.onOptionsItemSelected(item);
     }
