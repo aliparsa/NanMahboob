@@ -20,6 +20,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import Helpers.ImageLoaderHelper;
+import Helpers.ObjectToJsonConvertor;
 import Intefaces.IListViewItem;
 import partopars.irdevelopers.nanmahboob.R;
 
@@ -28,7 +29,7 @@ import partopars.irdevelopers.nanmahboob.R;
  */
 public class Group implements IListViewItem{
 
-    public int groupId;
+    public Integer groupId;
     public String groupName;
     public String groupImage;
     public Bitmap loadedImage;
@@ -40,13 +41,21 @@ public class Group implements IListViewItem{
         this.groupImage = groupImage;
     }
 
+    public Group() {
+
+    }
+
     public static ArrayList<Group> getArrayListFromJsonArray(JSONArray jsonArray) {
         ArrayList<Group> groups = new ArrayList<Group>();
+
         for (int i = 0; i < jsonArray.length();i++){
             try {
+
                 JSONObject jsonObject = (JSONObject) jsonArray.get(i);
-                Group group = new Group(jsonObject.getInt("groupId"), jsonObject.getString("groupName"), jsonObject.getString("groupImage"));
+                Group group = new ObjectToJsonConvertor<Group>().jsonToObject(jsonObject,new Group());
                 groups.add(group);
+
+                //       Group group = new Group(jsonObject.getInt("groupId"), jsonObject.getString("groupName"), jsonObject.getString("groupImage"));
 
             } catch (Exception e) {
                 e.printStackTrace();

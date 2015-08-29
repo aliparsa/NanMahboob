@@ -12,17 +12,16 @@
         android:padding="5dp"
         android:gravity="center"
         android:layout_weight="1"
-        android:background="#e2e2e2"
+        android:background="@color/basket_footer_background"
         />
 
     <Views.TextViewFont
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="تعداد"
+        android:text="0"
         android:textSize="15dp"
         android:gravity="center"
-        android:background="#e2e2e2"
-
+        android:background="@color/basket_footer_background"
         android:padding="5dp"
         android:layout_weight="1"
         />
@@ -33,7 +32,7 @@
         android:text="جمع مبلغ"
         android:textSize="15dp"
         android:gravity="center"
-        android:background="#e2e2e2"
+        android:background="@color/basket_footer_background"
 
         android:padding="5dp"
         android:layout_weight="1"
@@ -42,10 +41,10 @@
     <Views.TextViewFont
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="قیمت کل"
+        android:text="0"
         android:textSize="15dp"
         android:gravity="center"
-        android:background="#e2e2e2"
+        android:background="@color/basket_footer_background"
         android:padding="5dp"
         android:layout_weight="1"
         />

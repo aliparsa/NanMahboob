@@ -17,12 +17,15 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 import Adapter.ListViewObjectAdapter;
 import DataModel.Group;
 import Helpers.FirstRunHelper;
 import Helpers.GroupsHelper;
+import Helpers.ObjectToJsonConvertor;
 import Helpers.ProductsHealper;
 import Helpers.RamHelper;
 import Helpers.RtlSupportHelper;
@@ -53,6 +56,9 @@ public class MainActivity extends AppCompatActivity
         //     mTitle = getTitle();
 
         FirstRunHelper.init(context);
+
+
+
 
 
         // Set up the drawer.

@@ -25,5 +25,6 @@
     <color name="tab_bar_divider">#01bba7</color>
     <color name="tab_bar_text_color">#002d5c</color>
 
+    <color name="basket_footer_background">#cccccc</color>
 
 </resources>
