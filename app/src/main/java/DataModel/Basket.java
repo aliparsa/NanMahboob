@@ -62,8 +62,8 @@ public class Basket implements IListViewItem {
 //        // fill
         holder.name.setText(this.product.productName);
         holder.count.setText(this.count+"");
-        holder.price.setText("price");
-        holder.sumPrice.setText("sum price");
+        holder.price.setText(this.product.productPrice);
+        holder.sumPrice.setText((Integer.parseInt(this.product.productPrice)*count)+"");
     }
 
     public class Holder {

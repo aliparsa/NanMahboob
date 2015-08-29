@@ -34,6 +34,7 @@
             android:padding="15dp"
             android:text="اضافه به سبد"
             android:id="@+id/btn_add"
+            android:textColor="#fff"
             android:background="#8bc34a"
             android:layout_margin="5dp"
 

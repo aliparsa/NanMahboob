@@ -2,12 +2,12 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+
     tools:context="partopars.irdevelopers.nanmahboob.ProductInfoActivity">
 <RelativeLayout
     android:layout_width="fill_parent"
     android:layout_height="200dp"
-    android:layout_alignParentStart="true"
-    android:layout_alignParentEnd="true">
+    >
     <ImageView
         android:layout_width="fill_parent"
         android:layout_height="200dp"
@@ -31,11 +31,9 @@
         android:text="نام"
         android:layout_weight=".5"
         android:id="@+id/product_name"
-        android:shadowColor="#2d2d2d"
-        android:shadowRadius="10"
         android:textColor="#fff"
         android:gravity="right"
-        android:padding="20dp"
+        android:padding="15dp"
         android:background="@drawable/price_background"
          />
 
@@ -45,17 +43,24 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="قیمت"
         android:layout_weight=".5"
-        android:shadowColor="#2d2d2d"
-        android:shadowRadius="10"
         android:id="@+id/product_price"
         android:textColor="#fff"
         android:gravity="right"
-        android:padding="20dp"
+        android:padding="15dp"
         android:background="@drawable/price_background"
         />
 
     </LinearLayout>
 </RelativeLayout>
+
+    <Views.ButtonFont
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="افزودن به سبد خرید"
+        android:background="#3fb42e"
+        android:textColor="#fff"
+        android:id="@+id/add_to_basket_product_info" />
+
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">

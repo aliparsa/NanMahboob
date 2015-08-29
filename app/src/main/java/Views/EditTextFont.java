@@ -13,21 +13,21 @@ public class EditTextFont extends EditText {
     public EditTextFont(Context context) {
         super(context);
         if (!isInEditMode()) {
-            FontHelper.SetFontNormal(context, FontHelper.Fonts.YEKAN, this);
+            FontHelper.SetFontNormal(context,this);
         }
     }
 
     public EditTextFont(Context context, AttributeSet attrs) {
         super(context, attrs);
         if (!isInEditMode()) {
-            FontHelper.SetFontNormal(context,FontHelper.Fonts.YEKAN,this);
+            FontHelper.SetFontNormal(context,this);
         }
     }
 
     public EditTextFont(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         if (!isInEditMode()) {
-            FontHelper.SetFontNormal(context,FontHelper.Fonts.YEKAN,this);
+            FontHelper.SetFontNormal(context,this);
         }
     }
 

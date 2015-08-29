@@ -13,6 +13,7 @@ import Adapter.ListViewObjectAdapter;
 import DataModel.Basket;
 import Helpers.BasketHelper;
 import Helpers.RtlSupportHelper;
+import Views.TextViewFont;
 
 public class BasketActivity extends AppCompatActivity {
 Context context;
@@ -33,6 +34,13 @@ Context context;
         listView.addHeaderView(header);
         listView.addFooterView(footer);
         listView.setAdapter(new ListViewObjectAdapter<Basket>(context, BasketHelper.getBaskets()));
+
+        TextViewFont sumAll = (TextViewFont) footer.findViewById(R.id.sum_all);
+        TextViewFont priceAll = (TextViewFont) footer.findViewById(R.id.price_all);
+
+        sumAll.setText(BasketHelper.getCountAll()+"");
+        priceAll.setText(BasketHelper.getPriceAll()+"");
+
 
 
 

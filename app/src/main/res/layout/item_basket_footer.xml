@@ -19,18 +19,19 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="0"
-        android:textSize="15dp"
+        android:textSize="15sp"
         android:gravity="center"
         android:background="@color/basket_footer_background"
         android:padding="5dp"
         android:layout_weight="1"
+        android:id="@+id/sum_all"
         />
 
     <Views.TextViewFont
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="جمع مبلغ"
-        android:textSize="15dp"
+        android:textSize="15sp"
         android:gravity="center"
         android:background="@color/basket_footer_background"
 
@@ -42,11 +43,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="0"
-        android:textSize="15dp"
+        android:textSize="15sp"
         android:gravity="center"
         android:background="@color/basket_footer_background"
         android:padding="5dp"
         android:layout_weight="1"
+        android:id="@+id/price_all"
+
         />
 
 </LinearLayout>
