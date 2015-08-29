@@ -3,5 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="partopars.irdevelopers.nanmahboob.ProductInfoActivity">
     <item android:id="@+id/action_settings" android:icon="@drawable/basket" android:title="@string/action_settings"
+    android:orderInCategory="100" app:showAsAction="ifRoom" />
+
+    <item android:id="@+id/action_add_to_basket" android:icon="@drawable/add" android:title="@string/action_settings"
         android:orderInCategory="100" app:showAsAction="ifRoom" />
 </menu>

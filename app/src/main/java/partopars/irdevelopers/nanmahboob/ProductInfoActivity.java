@@ -1,17 +1,24 @@
 package partopars.irdevelopers.nanmahboob;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.NumberPicker;
+import android.widget.Toast;
 
 import DataModel.Product;
+import Helpers.BasketHelper;
 import Helpers.RamHelper;
 import Helpers.RtlSupportHelper;
+import Views.ButtonFont;
 import Views.TextViewFont;
 import partopars.irdevelopers.nanmahboob.R;
 
@@ -69,6 +76,41 @@ public class ProductInfoActivity extends AppCompatActivity {
             Intent intent=new Intent(context,BasketActivity.class);
             startActivity(intent);
             return true;
+        }
+
+        if (id == R.id.action_add_to_basket) {
+
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View view = inflater.inflate(R.layout.add_to_basket_dialog, null);
+
+            final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            final NumberPicker np = (NumberPicker) view.findViewById(R.id.numberPicker);
+            ButtonFont add = (ButtonFont) view.findViewById(R.id.btn_add);
+
+            String[] nums = new String[100];
+            for(int i=0; i<nums.length; i++)
+                nums[i] = Integer.toString(i+1);
+
+            np.setMinValue(1);
+            np.setMaxValue(100);
+            np.setWrapSelectorWheel(false);
+            np.setDisplayedValues(nums);
+            np.setValue(1);
+
+            builder.setView(view);
+            final AlertDialog alertDialog = builder.show();
+
+            add.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    BasketHelper.addToBasket(product, np.getValue());
+                    alertDialog.dismiss();
+                    Toast.makeText(context,product.productName+"\n"+" به سبد خرید افزوده شد " ,Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
+
         }
 
         return super.onOptionsItemSelected(item);

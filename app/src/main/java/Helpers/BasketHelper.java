@@ -10,7 +10,7 @@ import DataModel.Product;
  */
 public class BasketHelper {
 
-    private static ArrayList<Basket> baskets;
+    private static ArrayList<Basket> baskets = new ArrayList<Basket>();
 
     public static void addToBasket(Product product,  int count) {
 
