@@ -2,9 +2,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="partopars.irdevelopers.nanmahboob.ProductInfoActivity">
-    <item android:id="@+id/action_settings" android:icon="@drawable/basket" android:title="@string/action_settings"
+
+    <item android:id="@+id/action_add_to_basket" android:icon="@drawable/add" android:title="اضافه به سبد خرید"
+        android:orderInCategory="100" app:showAsAction="ifRoom" />
+
+    <item android:id="@+id/action_settings" android:icon="@drawable/basket" android:title="سبد خرید"
     android:orderInCategory="100" app:showAsAction="ifRoom" />
 
-    <item android:id="@+id/action_add_to_basket" android:icon="@drawable/add" android:title="@string/action_settings"
-        android:orderInCategory="100" app:showAsAction="ifRoom" />
+
 </menu>

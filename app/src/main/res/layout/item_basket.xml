@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="4">
+
+    <Views.TextViewFont
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="نام"
+        android:textSize="15dp"
+        android:padding="5dp"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:id="@+id/basket_item_name"
+        />
+
+    <Views.TextViewFont
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="تعداد"
+        android:textSize="15dp"
+        android:gravity="center"
+        android:id="@+id/basket_item_count"
+        android:padding="5dp"
+        android:layout_weight="1"
+        />
+
+    <Views.TextViewFont
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="قیمت واحد"
+        android:textSize="15dp"
+        android:gravity="center"
+        android:id="@+id/basket_item_price"
+        android:padding="5dp"
+        android:layout_weight="1"
+        />
+
+    <Views.TextViewFont
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="قیمت کل"
+        android:textSize="15dp"
+        android:gravity="center"
+        android:id="@+id/basket_item_sum_price"
+        android:padding="5dp"
+        android:layout_weight="1"
+        />
+
+</LinearLayout>
