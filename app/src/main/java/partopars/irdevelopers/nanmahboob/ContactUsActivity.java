@@ -58,7 +58,7 @@ public class ContactUsActivity extends ActionBarActivity {
         if (id == R.id.action_contact_us) {
             //TODO send message ????
 
-            ((RegisterActivity) context).finish();
+            ((ContactUsActivity) context).finish();
             return true;
         }
 
