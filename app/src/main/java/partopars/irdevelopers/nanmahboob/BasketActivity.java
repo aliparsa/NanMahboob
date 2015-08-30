@@ -24,7 +24,7 @@ Context context;
         setContentView(R.layout.activity_basket);
          context = this;
         RtlSupportHelper.forceRTLIfSupported(this);
-        getSupportActionBar().setTitle("فاکتور فروش");
+        getSupportActionBar().setTitle("سبد خرید شما");
 
         listView = (ListView) findViewById(R.id.listView);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

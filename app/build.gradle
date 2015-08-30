@@ -28,4 +28,5 @@ dependencies {
     compile files('src/main/java/httpmime-4.0.1.jar')
     compile files('src/main/java/apache-mime4j-0.6.jar')
     compile files('src/main/libs/universal-image-loader-1.9.4.jar')
+    compile 'com.h6ah4i.android.materialshadowninepatch:materialshadowninepatch:0.6.3'
 }

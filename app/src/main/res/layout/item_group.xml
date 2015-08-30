@@ -34,7 +34,7 @@
         android:textSize="27sp"
         android:shadowColor="#2d2d2d"
         android:shadowRadius="10"
-        android:background="#98aeb2b2"
+        android:background="@drawable/price_background"
         android:textColor="#FFF"
         android:gravity="center"
         android:id="@+id/item_group_name"

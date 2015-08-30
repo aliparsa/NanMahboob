@@ -93,6 +93,9 @@ public class Product implements IListViewItem {
         if (holder.title == null)
             holder.title = (TextView) view.findViewById(R.id.item_product_name);
 
+        if (holder.price == null)
+            holder.price = (TextView) view.findViewById(R.id.item_product_price);
+
 
 
         if (holder.imageView == null)
@@ -103,6 +106,7 @@ public class Product implements IListViewItem {
 
         // fill
         holder.title.setText(this.productName);
+        holder.price.setText(this.productPrice);
 
         if (loadedImage != null) {
             holder.imageView.setImageBitmap(loadedImage);
@@ -140,6 +144,7 @@ public class Product implements IListViewItem {
     public class Holder {
         public Product product;
         TextView title;
+        TextView price;
         ImageView imageView;
         ProgressBar progressBar;
     }

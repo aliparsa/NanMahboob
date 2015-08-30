@@ -14,7 +14,9 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,6 +26,8 @@
         <activity
             android:name=".ProductsActivity"
             android:label="@string/title_activity_products"
+            android:screenOrientation="portrait"
+
             android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -32,6 +36,8 @@
         <activity
             android:name=".QuickBuyActivity"
             android:label="@string/title_activity_quick_buy"
+            android:screenOrientation="portrait"
+
             android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -40,6 +46,8 @@
         <activity
             android:name=".RegisterActivity"
             android:label="@string/title_activity_register"
+            android:screenOrientation="portrait"
+
             android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -48,6 +56,8 @@
         <activity
             android:name=".ContactUsActivity"
             android:label="@string/title_activity_contact_us"
+            android:screenOrientation="portrait"
+
             android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -56,6 +66,8 @@
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
+            android:screenOrientation="portrait"
+
             android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -64,6 +76,8 @@
         <activity
             android:name=".ProductInfoActivity"
             android:label="@string/title_activity_product_info"
+            android:screenOrientation="portrait"
+
             android:parentActivityName=".ProductsActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -71,13 +85,19 @@
         </activity>
         <activity
             android:name=".BasketActivity"
+            android:screenOrientation="portrait"
+
             android:label="@string/title_activity_basket" />
         <activity
             android:name="partopars.irdevelopers.NanMahboob.contact_us"
+            android:screenOrientation="portrait"
+
             android:label="@string/title_activity_contact_us" >
         </activity>
         <activity
             android:name="partopars.irdevelopers.NanMahboob.activity_contact_us"
+            android:screenOrientation="portrait"
+
             android:label="@string/title_activity_activity_contact_us" >
         </activity>
     </application>

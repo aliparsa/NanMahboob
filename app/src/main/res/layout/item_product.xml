@@ -27,19 +27,49 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true" />
 
-    <Views.TextViewFont
+
+    <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="50dp"
-        android:text="fhjufhfjhf"
-        android:textSize="27sp"
-        android:shadowColor="#2d2d2d"
-        android:shadowRadius="10"
-        android:background="#98aeb2b2"
-        android:textColor="#FFF"
-        android:gravity="center"
-        android:id="@+id/item_product_name"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:weightSum="1"
+        >
+
+        <Views.TextViewFont
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="نام"
+            android:layout_weight=".5"
+            android:shadowColor="#2d2d2d"
+            android:shadowRadius="10"
+            android:id="@+id/item_product_name"
+            android:textColor="#fff"
+            android:gravity="right"
+            android:padding="15dp"
+            android:background="@drawable/price_background"
+            />
+
+        <Views.TextViewFont
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="قیمت"
+            android:id="@+id/item_product_price"
+            android:layout_weight=".5"
+            android:shadowColor="#2d2d2d"
+            android:shadowRadius="10"
+            android:textColor="#fff"
+            android:gravity="right"
+            android:padding="15dp"
+            android:background="@drawable/price_background"
+            />
+
+
+    </LinearLayout>
+
+
 
 
     <ProgressBar

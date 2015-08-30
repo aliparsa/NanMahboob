@@ -1,10 +1,29 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+<ScrollView
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:orientation="vertical"
 
     tools:context="partopars.irdevelopers.nanmahboob.ProductInfoActivity">
-<RelativeLayout
+
+
+
+        >
+
+    <LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+        android:paddingBottom="10dp"
+
+        >
+
+    <RelativeLayout
     android:layout_width="fill_parent"
     android:layout_height="200dp"
     >
@@ -16,13 +35,14 @@
         android:src="@drawable/bread"
 
         />
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:orientation="horizontal"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:weightSum="1"
-        android:layout_alignParentStart="true">
+        >
 
     <Views.TextViewFont
         android:layout_width="0dp"
@@ -30,6 +50,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="نام"
         android:layout_weight=".5"
+        android:shadowColor="#2d2d2d"
+        android:shadowRadius="10"
         android:id="@+id/product_name"
         android:textColor="#fff"
         android:gravity="right"
@@ -42,24 +64,40 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="قیمت"
-        android:layout_weight=".5"
         android:id="@+id/product_price"
+        android:layout_weight=".5"
+        android:shadowColor="#2d2d2d"
+        android:shadowRadius="10"
         android:textColor="#fff"
         android:gravity="right"
         android:padding="15dp"
         android:background="@drawable/price_background"
         />
 
-    </LinearLayout>
-</RelativeLayout>
 
+    </LinearLayout>
+
+</RelativeLayout>
     <Views.ButtonFont
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="افزودن به سبد خرید"
         android:background="#3fb42e"
         android:textColor="#fff"
+        android:layout_alignParentBottom="true"
+
         android:id="@+id/add_to_basket_product_info" />
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="5dp"
+            android:background="@drawable/drop_shadow">
+
+        </ImageView>
+
+</LinearLayout>
+
+
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -70,16 +108,16 @@
             android:layout_height="fill_parent"
             android:text="Description "
             android:lineSpacingExtra="6dp"
-            android:layout_marginRight="4dp"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:background="#98eff3f3"
             android:textColor="#646464"
             android:gravity="right"
             android:id="@+id/product_des"
-            android:layout_margin="5dp"
+            android:layout_margin="10dp"
 
             />
     </RelativeLayout>
 
 
 </LinearLayout>
+</ScrollView>
