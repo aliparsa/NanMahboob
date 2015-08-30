@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import org.json.JSONObject;
@@ -145,7 +146,7 @@ public class MainActivity extends AppCompatActivity
             parent.setContentInsetsAbsolute(0, 0);
 
 
-            ImageView navigationDrawerOpenClose = (ImageView) customActionBar.findViewById(R.id.ac_nav);
+            LinearLayout navigationDrawerOpenClose = (LinearLayout) customActionBar.findViewById(R.id.ac_nav_layout);
             navigationDrawerOpenClose.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
