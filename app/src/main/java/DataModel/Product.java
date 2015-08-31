@@ -19,6 +19,7 @@ import java.util.ArrayList;
 
 import Helpers.ImageLoaderHelper;
 import Helpers.ObjectToJsonConvertor;
+import Helpers.ServerAddress;
 import Intefaces.IListViewItem;
 import partopars.irdevelopers.nanmahboob.R;
 
@@ -113,7 +114,7 @@ public class Product implements IListViewItem {
             holder.progressBar.setVisibility(View.GONE);
         } else {
 
-            ImageLoaderHelper.load(context, this.productImage, holder.imageView, new ImageLoadingListener() {
+            ImageLoaderHelper.load(context, ServerAddress.imageFolder+"/"+this.productImage, holder.imageView, new ImageLoadingListener() {
                 @Override
                 public void onLoadingStarted(String s, View view) {
                     holder.progressBar.setVisibility(View.VISIBLE);

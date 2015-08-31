@@ -5,6 +5,10 @@ package Helpers;
  */
 public class ServerAddress {
 
-    public static String funcFile = "http://192.168.0.8/parto/func.php";
+//    public static String funcFile = "http://192.168.0.8/parto/func.php";
+    public static String  server = "http://irdevelopers.ir";
+    public static String funcFile = server +  "/parto/func.php";
+    public static String  imageFolder = server + "/parto/images";
+
 
 }
