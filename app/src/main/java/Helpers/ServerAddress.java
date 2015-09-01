@@ -9,6 +9,7 @@ public class ServerAddress {
     public static String  server = "http://irdevelopers.ir";
     public static String funcFile = server +  "/parto/func.php";
     public static String  imageFolder = server + "/parto/images";
+    public static String  appUpdate = server + "/parto/app";
 
 
 }

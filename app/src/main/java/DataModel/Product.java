@@ -97,8 +97,6 @@ public class Product implements IListViewItem {
         if (holder.price == null)
             holder.price = (TextView) view.findViewById(R.id.item_product_price);
 
-
-
         if (holder.imageView == null)
             holder.imageView = (ImageView) view.findViewById(R.id.item_product_image);
 

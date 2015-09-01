@@ -18,6 +18,7 @@ import DataModel.Product;
 import Helpers.BasketHelper;
 import Helpers.RamHelper;
 import Helpers.RtlSupportHelper;
+import Helpers.ToastHelper;
 import Views.ButtonFont;
 import Views.TextViewFont;
 
@@ -73,7 +74,8 @@ public class ProductInfoActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         BasketHelper.addToBasket(product, np.getValue());
                         alertDialog.dismiss();
-                        Toast.makeText(context,product.productName+"\n"+" به سبد خرید افزوده شد " ,Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(context,product.productName+"\n"+" به سبد خرید افزوده شد " ,Toast.LENGTH_SHORT).show();
+                        ToastHelper.makeTextLong(context,product.productName+"\n"+" به سبد خرید افزوده شد " );
                     }
                 });
 

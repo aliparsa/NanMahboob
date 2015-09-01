@@ -73,6 +73,7 @@ public class ProductsActivity extends ActionBarActivity {
             }
         });
         showLoading();
+
         ProductsHealper.getProducts(context, new CallBackProduct() {
             @Override
             public void onSuccess(ArrayList<Product> products) {
@@ -83,7 +84,6 @@ public class ProductsActivity extends ActionBarActivity {
             @Override
             public void onError(String errorMessage) {
                 hideLoading();
-
             }
         });
 
