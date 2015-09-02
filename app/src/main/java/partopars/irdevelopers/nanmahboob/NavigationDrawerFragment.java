@@ -107,8 +107,9 @@ public class NavigationDrawerFragment extends Fragment {
 
 
         ArrayList<NavigationDrawerItem> navigationDrawerItems = new ArrayList<NavigationDrawerItem>();
-        navigationDrawerItems.add(new NavigationDrawerItem("ثبت نام",R.drawable.breadnavi));
+        navigationDrawerItems.add(new NavigationDrawerItem("ثبت اطلاعات",R.drawable.breadnavi));
         navigationDrawerItems.add(new NavigationDrawerItem("تماس با ما",R.drawable.breadnavi));
+        navigationDrawerItems.add(new NavigationDrawerItem("درباره ما",R.drawable.breadnavi));
         navigationDrawerItems.add(new NavigationDrawerItem("تنظیمات",R.drawable.breadnavi));
 
 
@@ -139,6 +140,10 @@ public class NavigationDrawerFragment extends Fragment {
                         startActivity(intent);
                         break;
                     case 3:
+                        intent = new Intent(context,AboutUsActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 4:
                         intent = new Intent(context,SettingsActivity.class);
                         startActivity(intent);
                         break;

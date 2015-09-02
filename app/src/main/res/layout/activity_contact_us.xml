@@ -63,27 +63,7 @@
             // Form
 
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="60dp"
-                android:text="نشانی : شیراز چهار راه مشیر جنب پاساژ مهدی نان محبوب"
-                android:textSize="16sp"
-                android:padding="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                /> // Address
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="40dp"
-                android:text="تلفن : 32222222-071"
-                android:textSize="16sp"
-                android:padding="10dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                /> //Tell
 
 
             <Views.EditTextFont

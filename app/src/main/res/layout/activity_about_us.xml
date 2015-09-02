@@ -22,32 +22,24 @@
         android:orientation="vertical"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        tools:context="irdevelopers.asemanweb.RigesterActivity">
+        tools:context="partopars.irdevelopers.nanmahboob.AboutUsActivity">
 
 
-
+        // Header
 
         <RelativeLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="fill_parent"
             android:layout_height="220dp">
 
-            <ProgressBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/progressBar"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true"
-                android:visibility="gone"
 
-                />
 
             <ImageView
                 android:layout_width="fill_parent"
                 android:layout_height="240dp"
                 android:id="@+id/imageView"
                 android:scaleType="fitXY"
-                android:src="@drawable/rigester"
+                android:src="@drawable/about"
 
                 />
 
@@ -55,7 +47,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="ثبت اطلاعات"
+                android:text="درباره ما"
                 android:id="@+id/titletextView"
                 android:textColor="#fff"
                 android:gravity="right"
@@ -67,59 +59,40 @@
 
         </RelativeLayout>
 
-        <Views.EditTextFont
+
+        // Form
+
+
+        <TextView
             android:layout_width="fill_parent"
-            android:layout_height="40dp"
-            android:hint="نام و نام خانوادگی"
-            android:textSize="14sp"
+            android:layout_height="60dp"
+            android:text="نشانی :"
+            android:textSize="20sp"
             android:padding="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:inputType="textPersonName"
-            android:background="@drawable/textbox_background"
-            android:id="@+id/rig_name"
+            /> // Address
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
+            android:text=" شیراز چهار راه مشیر جنب پاساژ مهدی نان محبوب"
+            android:textSize="16sp"
+            android:padding="10dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            /> // Address
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:text="تلفن : 32222222-071"
+            android:textSize="16sp"
+            android:padding="10dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             />
-
-        <Views.EditTextFont
-            android:layout_width="fill_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:padding="10dp"
-            android:background="@drawable/textbox_background"
-            android:inputType="phone"
-            android:textSize="14sp"
-            android:id="@+id/rig_tel"
-            android:hint="شماره تماس"/>
-
-        <Views.EditTextFont
-            android:layout_width="fill_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:padding="10dp"
-            android:background="@drawable/textbox_background"
-            android:inputType="text"
-            android:textSize="14sp"
-            android:id="@+id/rig_address"
-            android:hint="آدرس دقیق"/>
-
-        <Views.EditTextFont
-            android:layout_width="fill_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:padding="10dp"
-            android:textSize="14sp"
-            android:id="@+id/rig_email"
-
-            android:background="@drawable/textbox_background"
-            android:inputType="textEmailAddress"
-            android:hint="ایمیل"/>
 
 
 
@@ -127,3 +100,5 @@
     </LinearLayout>
 
 </ScrollView>
+
+

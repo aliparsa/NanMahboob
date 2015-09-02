@@ -15,9 +15,12 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_quick_buy">خرید سریع</string>
-    <string name="title_activity_register">ثبت نام</string>
-    <string name="title_activity_contact_us">تماس با ما</string>
+    <string name="title_activity_register">بازگشت</string>
+    <string name="title_activity_contact_us">بازگشت</string>
     <string name="title_activity_product_info">ProductInfoActivity</string>
     <string name="title_activity_basket">BasketActivity</string>
-    <string name="title_activity_activity_contact_us">activity_contact_us</string>
+    <string name="title_activity_activity_contact_us">تماس با ما</string>
+    <string name="title_activity_activity_about_us">ActivityAboutUs</string>
+    <string name="title_activity_about_us">بازگشت</string>
+
 </resources>
